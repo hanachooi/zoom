@@ -29,12 +29,25 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// connection이 이루어질 때마다, 소켓 통신이 이루어지게 됌. 
-function handleConnection(socket) {
-    console.log(socket);
-    console.log("소켓 연결");
-}
-wss.on("connection", handleConnection)
+// // connection이 이루어질 때마다, 소켓 통신이 이루어지게 됌. 
+// function handleConnection(socket) {
+//     // socket 이 frontend와 real-time 소통을 가능하게 함. 
+//     console.log(socket);
+//     console.log("소켓 연결");
+//     // 서버의 소켓은 연결된 브라우저를 뜻함 
+// }
+// 소켓이 제공하는 여러 함수들이 있음 
+
+wss.on("connection", (socket) => {
+    console.log("Connected to Browser");
+    socket.on("close", () => console.log("Disconnected from the Browser"));
+    socket.on("message", (message) => {
+        const messageString = message.toString('utf-8');
+        socket.send(messageString);
+        console.log(messageString);
+    });
+    socket.send("hello!!");
+});
 
 
 

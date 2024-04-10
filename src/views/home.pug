@@ -9,5 +9,8 @@ html(lang="en")
         header 
             h1 eee
         main 
-            h2 zoom
+            ul
+            form#myForm(action="/submit-form" method="post")
+                input#messageInput(type="text" placeholder = "write a msg", required)
+                button(type="submit") Send
         script(src="/js/index.js")
