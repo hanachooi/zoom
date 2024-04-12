@@ -9,6 +9,9 @@ html(lang="en")
         header 
             h1 eee
         main 
+            form#nick(action="/submit-form" method="post")
+                input(type = "text", placeholder = "choose a nickname", required)
+                button(type="submit") Save 
             ul
             form#myForm(action="/submit-form" method="post")
                 input#messageInput(type="text" placeholder = "write a msg", required)
