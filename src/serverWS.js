@@ -1,3 +1,7 @@
+/*
+    웹소켓을 이용한 실시간 채팅 코드 입니다.
+*/
+
 import express from "express";
 import path from "path";
 import http from "http";
